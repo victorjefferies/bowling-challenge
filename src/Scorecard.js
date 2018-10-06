@@ -1,4 +1,4 @@
-function Scorecard() {
+function Scorecard(roundNumber = 1) {
   this._roundOne = 0
   this._roundTwo = 0
   this._roundThree = 0
@@ -10,6 +10,7 @@ function Scorecard() {
   this._roundNine = 0
   this._roundTen = 0
   this._total = 0
+  roundNumber = roundNumber
 }
 
 Scorecard.prototype.score = function() {

@@ -2,34 +2,46 @@
 
 describe('Round', function(){
 
-  var round
+  var round;
   
   beforeEach(function() {
     round = new Round()
   })
 
+
+
   it('score should be 0,0,0 when created', function() {
+    expect(round.number).toEqual(1)
     expect(round.one).toEqual(0)
     expect(round.two).toEqual(0)
     expect(round.bonus).toEqual(0)
+    expect(round.roundOver).toEqual(false)
   })
 
   describe('addOne', function() {
     it('should change the score for the required bowl', function() {
-      round.addOne(2)
-      expect(round.one).toEqual(2)
+      round.addOne(9)
+      expect(round.one).toEqual(9)
+    })
+    it('should return 10', function() {
+      round.addOne(10)
+      expect(round.roundOver).toEqual(true)
+      expect(round.one).toEqual(10)      
     })
   })
-  describe('addOne', function() {
-    it('should change the score for the required bowl', function() {
-      round.addOne(2)
-      expect(round.one).toEqual(2)
+  describe('addTwo', function() {
+    it('should return 10', function() {
+      round.addOne(8)
+      round.addTwo(2)
+      expect(round.roundOver).toEqual(true)
+      expect(round.two).toEqual(2)  
+      expect(round.spare).toEqual(true)    
     })
   })
-  describe('addOne', function() {
+  describe('addBonus', function() {
     it('should change the score for the required bowl', function() {
-      round.addOne(2)
-      expect(round.one).toEqual(2)      
+      round.addBonus(2)
+      expect(round.bonus).toEqual(2)      
     })
   })
 

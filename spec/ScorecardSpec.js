@@ -7,6 +7,7 @@ describe("Scorecard", function() {
   beforeEach (function() {
     card = new Scorecard()
   })
+
    
   describe('score', function() {
     it('should output the score', function() {
