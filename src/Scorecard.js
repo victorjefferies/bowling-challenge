@@ -1,14 +1,14 @@
 function Scorecard(roundNumber = 1) {
-  this._roundOne = 0
-  this._roundTwo = 0
-  this._roundThree = 0
-  this._roundFour = 0
-  this._roundFive = 0
-  this._roundSix = 0
-  this._roundSeven = 0
-  this._roundEight = 0
-  this._roundNine = 0
-  this._roundTen = 0
+  this._roundOne = new Round()
+  this._roundTwo = new Round()
+  this._roundThree = new Round()
+  this._roundFour = new Round()
+  this._roundFive = new Round()
+  this._roundSix = new Round()
+  this._roundSeven = new Round()
+  this._roundEight = new Round()
+  this._roundNine = new Round()
+  this._roundTen = new Round()
   this._total = 0
   roundNumber = roundNumber
 }
@@ -20,4 +20,5 @@ Scorecard.prototype.score = function() {
 Scorecard.prototype.addTally = function(result) {
   this._total += result
 }
+
 

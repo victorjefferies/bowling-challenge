@@ -1,4 +1,5 @@
 function Round(number = 1) {
+  this.pins = 10
   this.number = number
   this.one = 0
   this.two = 0
@@ -10,6 +11,7 @@ function Round(number = 1) {
 
 Round.prototype.addOne = function(result) {
   if (result == 10) {
+    this.pins -= result
     this.one = result
     this.roundOver = true
   } else {
