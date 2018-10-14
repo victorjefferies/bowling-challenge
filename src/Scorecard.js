@@ -37,27 +37,17 @@ Scorecard.prototype.tagTotal = function() {
 Scorecard.prototype.calculateScore = function() {
   var score = 0
   for( i = 0 ; i < this.roundNumber ; i ++ ) {
-    // if (this.game[i].strike && this.game[i+ 1] != undefined && this.game[i + 1].strike){
-    //   score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 2].one
-    // } else if (this.game[i].strike && this.game[i + 1] != undefined ) {
-    //   score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 1].two
-    // } else {
-    //   score = score + this.game[i].roundTally()
-    // }
-    this.strikeRound(i)
+    if (this.game[i].strike && this.game[i+ 1] != undefined && this.game[i + 1].strike){
+      score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 2].one
+    } else if (this.game[i].strike && this.game[i + 1] != undefined ) {
+      score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 1].two
+    } else {
+      score = score + this.game[i].roundTally()
+    }
   }
   return score
 }
 
-Scorecard.prototype.strikeRound = function(i) {
-  if (this.game[i].strike && this.game[i+ 1] != undefined && this.game[i + 1].strike){
-   return score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 2].one
-  } else if (this.game[i].strike && this.game[i + 1] != undefined ) {
-    return score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 1].two
-  } else {
-    return score = score + this.game[i].roundTally()
-  }
-}
 
 
 
