@@ -16,6 +16,7 @@ describe('Round', function(){
     expect(round.two).toEqual(0)
     expect(round.bonus).toEqual(0)
     expect(round.pins).toEqual(10)
+    expect(round.strike).toEqual(false)
   })
 
   describe('addOne', function() {
@@ -23,11 +24,11 @@ describe('Round', function(){
       round.addOne(9)
       expect(round.one).toEqual(9)
       expect(round.pins).toEqual(1)
-      expect(round.round).toEqual(2)
     })
     it('should return 10', function() {
       round.addOne(10)
-      expect(round.one).toEqual(10)      
+      expect(round.one).toEqual(10)
+      expect(round.strike).toEqual(true)      
     })
   })
   describe('addTwo', function() {
@@ -75,4 +76,5 @@ describe('Round', function(){
     })
   })
 })
+
 

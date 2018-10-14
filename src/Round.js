@@ -5,21 +5,23 @@ function Round(number = 1) {
   this.two = 0
   this.bonus = 0
   this.spare = false
+  this.roundTotal = this.one + this.two
+  this.strike = false
   
 }
 
 
 
 Round.prototype.addOne = function(result) {
-  if (result == 10) {
-    this.pins -= result
+  if (result == 10) { // both if and else do the same thing?
+    this.pins -= result // Are you supposed to mark a strike?
     this.one = result
+    this.strike = true
   } else {
     this.one = result 
     this.pins -= result
   }
 }
-
 
 Round.prototype.addTwo = function(result) {
   if (this.one + result == 10) {
@@ -42,7 +44,7 @@ Round.prototype.roundTally = function() {
 }
 
 Round.prototype.roundOver = function() {
-  if (this.pins === 0) {
+  if (this.pins === 0) { // No round over when addOne and addTwo < 10?
     return true
   } else {
     this.nextBall()

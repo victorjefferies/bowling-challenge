@@ -1,25 +1,69 @@
-function Scorecard(roundNumber = 1) {
-  this.roundOne = new Round()
-  this.roundTwo = new Round()
-  this.roundThree = new Round()
-  this.roundFour = new Round()
-  this.roundFive = new Round()
-  this.roundSix = new Round()
-  this.roundSeven = new Round()
-  this.roundEight = new Round()
-  this.roundNine = new Round()
-  this.roundTen = new Round()
-  this.total_ = 0
-  roundNumber = roundNumber
+function Scorecard() {
+
+  this.game = new Array()
+  this.roundNumber = 0
+  this.roll1 = 1
+  this.roll2 = 2
+  this.roll3 = 3
 }
 
-Scorecard.prototype.score = function() {
-  return this._total
+
+Scorecard.prototype.makeRound = function() {
+  if (this.roundNumber < 9 ) {
+   this.game[this.roundNumber] = new Round()
+   this.increaseRoundCount()
+
+  } else {
+    return "add final round"
+  }
 }
 
-Scorecard.prototype.addTally = function(result) {
-  this._total += result
+Scorecard.prototype.increaseRoundCount = function() {
+  this.roundNumber ++
 }
+
+Scorecard.prototype.tagOne = function() {
+  return (this.roundNumber * 3) - 2
+}
+
+Scorecard.prototype.tagTwo = function() {
+  return (this.roundNumber * 3) - 1
+}
+
+Scorecard.prototype.tagTotal = function() {
+  return this.roundNumber * 3
+}
+
+Scorecard.prototype.calculateScore = function() {
+  var score = 0
+  for( i = 0 ; i < this.roundNumber ; i ++ ) {
+    score = score + this.game[i].roundTally()
+  }
+  return score
+}
+
+Scorecard.prototype.strike = function() {
+  
+  var result = new Promise(function( resolve, reject ) {
+    console.log('£££££££')
+    console.log(result)
+    if ( this.game[this.roundNumber - 1].strike ) {
+      resolve( this.game[this.roundNumber + 1] == !null)  //trying to say resolve when this happens
+    } else {
+     reject( 'no strike' ) 
+    }
+  })
+  console.log(result)
+
+  result.then(function(fromResolve) {
+    return fromResolve
+  }).catch(function(fromReject) {
+    return this.calculateScore()
+    
+  })
+}
+
+
 
 
 
