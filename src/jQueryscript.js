@@ -9,38 +9,36 @@ $( '#button3' ).hide()
 
 $( '#button1' ).click(function() {
   var num = Number($( '#mySelect' ).val())
-  console.log(num)
-  card.game[card.roundNumber - 1].addOne(num) 
+  card.game[card.index].addOne(num) 
   if (num === 10) {
-    $( '#roll' + String( card.tagOne() ) ).html(card.game[card.roundNumber - 1].one)
-    $( '#roll' + String( card.tagTwo() ) ).html(card.game[card.roundNumber - 1].two)
+    $( '#roll' + String( card.tagOne() ) ).html(card.game[card.index].one)
+    $( '#roll' + String( card.tagTwo() ) ).html(card.game[card.index].two)
     $( '#roll' + String( card.tagTotal() ) ).html( "X" )    
-    card.makeRound()
+    card.increaseIndex()
     $( '#button1' ).show()
     $( '#button2' ).hide()
   } else {
-    $( '#roll' + String( card.tagOne() ) ).html(card.game[card.roundNumber - 1].one)
+    $( '#roll' + String( card.tagOne() ) ).html(card.game[card.index].one)
     $( '#button1' ).hide()
     $( '#button2' ).show()
-  }
-}) 
+    }
+  }) 
 
 $('#button2').click(function() {
   var num = $( '#mySelect' ).val()
-  card.game[card.roundNumber - 1].addTwo(Number(num))
-  $('#roll' + String( card.tagTwo() ) ).html( card.game[card.roundNumber - 1].two )
-  $('#roll' + String( card.tagTotal() ) ).html( card.calculateScore() )
-  card.makeRound()
+  card.game[card.index].addTwo(Number(num))
+  $('#roll' + String( card.tagTwo() ) ).html( card.game[card.index].two )
+  if (card.game[card.index].roundTally() === 10) {
+    $('#roll' + String( card.tagTotal() ) ).html( "/" )  
+  } else {
+    $('#roll' + String( card.tagTotal() ) ).html( card.calculateScore() )
+  }
+  card.increaseIndex()
   $( '#button2' ).hide()
   $( '#button1' ).show()
-  console.log('finished')
+
  
 })
 
-
-$( '#nextframe' ).click(function() {
-  card.makeRound()
-  console.log('inside click event')
-})
 
 })
