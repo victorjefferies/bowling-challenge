@@ -52,19 +52,15 @@ describe('Scorecard', function() {
       card.makeRound()
       card.game[1].addOne(4)
       card.game[1].addTwo(2)
-      expect(card.strike() ).toEqual(14)
+      expect(card.calculateScore() ).toEqual(14)
     })
-  })
-
-
-  describe('strike', function() {
-    it('should add the score of the next two bowled balls', function() {
+    it('if a strike it should add the score of the next two bowled balls', function() {
       card.makeRound()
       card.game[0].addOne(10)
       card.makeRound()
       card.game[1].addOne(3)
       card.game[1].addTwo(5)
-      expect( card.strike() ).toEqual(26)
+      expect( card.calculateScore() ).toEqual(26)
     })
     it('should add the result of the next two strikes if strikes bowled', function() {
       card.makeRound()
@@ -76,7 +72,8 @@ describe('Scorecard', function() {
       card.makeRound()
       card.game[3].addOne(1)
       card.game[3].addTwo(1)
-      expect( card.strike() ).toEqual(30)
+      expect( card.calculateScore() ).toEqual(65)
     })
   })
+  
 })

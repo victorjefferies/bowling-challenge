@@ -37,31 +37,32 @@ Scorecard.prototype.tagTotal = function() {
 Scorecard.prototype.calculateScore = function() {
   var score = 0
   for( i = 0 ; i < this.roundNumber ; i ++ ) {
-    score = score + this.game[i].roundTally()
+    // if (this.game[i].strike && this.game[i+ 1] != undefined && this.game[i + 1].strike){
+    //   score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 2].one
+    // } else if (this.game[i].strike && this.game[i + 1] != undefined ) {
+    //   score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 1].two
+    // } else {
+    //   score = score + this.game[i].roundTally()
+    // }
+    this.strikeRound(i)
   }
   return score
 }
 
-Scorecard.prototype.strike = function() {
-  
-  var result = new Promise(function( resolve, reject ) {
-    console.log('£££££££')
-    console.log(result)
-    if ( this.game[this.roundNumber - 1].strike ) {
-      resolve( this.game[this.roundNumber + 1] == !null)  //trying to say resolve when this happens
-    } else {
-     reject( 'no strike' ) 
-    }
-  })
-  console.log(result)
-
-  result.then(function(fromResolve) {
-    return fromResolve
-  }).catch(function(fromReject) {
-    return this.calculateScore()
-    
-  })
+Scorecard.prototype.strikeRound = function(i) {
+  if (this.game[i].strike && this.game[i+ 1] != undefined && this.game[i + 1].strike){
+   return score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 2].one
+  } else if (this.game[i].strike && this.game[i + 1] != undefined ) {
+    return score = score + this.game[i].roundTally() + this.game[i + 1].one + this.game[i + 1].two
+  } else {
+    return score = score + this.game[i].roundTally()
+  }
 }
+
+
+
+
+
 
 
 

@@ -14,14 +14,15 @@ $( '#button1' ).click(function() {
   if (num === 10) {
     $( '#roll' + String( card.tagOne() ) ).html(card.game[card.roundNumber - 1].one)
     $( '#roll' + String( card.tagTwo() ) ).html(card.game[card.roundNumber - 1].two)
-    $( '#roll' + String( card.tagTotal() ) ).html( card.calculateScore() )    
-    
+    $( '#roll' + String( card.tagTotal() ) ).html( "X" )    
+    card.makeRound()
+    $( '#button1' ).show()
+    $( '#button2' ).hide()
   } else {
     $( '#roll' + String( card.tagOne() ) ).html(card.game[card.roundNumber - 1].one)
+    $( '#button1' ).hide()
+    $( '#button2' ).show()
   }
-  $( '#button1' ).hide()
-  $( '#button2' ).show()
-
 }) 
 
 $('#button2').click(function() {
