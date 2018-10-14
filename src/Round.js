@@ -40,6 +40,7 @@ Round.prototype.addBonus = function(result) {
 
 Round.prototype.roundTally = function() {
   var total = this.one + this.two + this.bonus
+  console.log('rndtly')
   return total
 }
 
